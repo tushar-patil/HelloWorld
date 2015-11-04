@@ -5,4 +5,6 @@
     <string name="action_settings">Settings</string>
 
     <string name="app_title">Not a Tic-Tac-Toe</string>
+    <string name="lets_pay_btn_txt">Let\'s play</string>
+    <string name="title_activity_game_menu">GameMenuActivity</string>
 </resources>

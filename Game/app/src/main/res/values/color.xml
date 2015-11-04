@@ -3,5 +3,6 @@
 
     <color name="light_brown">#EACEA7</color>
     <color name="dark_brown">#B5663F</color>
+    <color name="extreme_dark_brown">#A5663F</color>
     <color name="white">#FFFFFF</color>
 </resources>

@@ -170,4 +170,46 @@
     <dimen name="negative_dim_15">-11.25dp</dimen>
     <dimen name="negative_dim_47">-35.25dp</dimen>
     <dimen name="negative_dim_10">-7.25dp</dimen>
+
+    <!-- txt sizes -->
+    <dimen name="txt_6">6sp</dimen>
+    <dimen name="txt_7">7sp</dimen>
+    <dimen name="txt_8">8.25sp</dimen>
+    <dimen name="txt_9">9sp</dimen>
+    <dimen name="txt_10">9.75sp</dimen>
+    <dimen name="txt_11">10.5sp</dimen>
+    <dimen name="txt_12">11.25sp</dimen>
+    <dimen name="txt_13">12sp</dimen>
+    <dimen name="txt_14">12.75sp</dimen>
+    <dimen name="txt_15">13.5sp</dimen>
+    <dimen name="txt_16">14.25sp</dimen>
+    <dimen name="txt_17">15sp</dimen>
+    <dimen name="txt_18">15.75sp</dimen>
+    <dimen name="txt_19">14.25sp</dimen>
+    <dimen name="txt_20">15.0sp</dimen>
+    <dimen name="txt_21">15.75sp</dimen>
+    <dimen name="txt_22">16.5sp</dimen>
+    <dimen name="txt_23">17.25sp</dimen>
+    <dimen name="txt_24">18.0sp</dimen>
+    <dimen name="txt_25">18.75sp</dimen>
+    <dimen name="txt_26">19.5dp</dimen>
+    <dimen name="txt_27">20.25dp</dimen>
+    <dimen name="txt_30">22.5sp</dimen>
+    <dimen name="txt_35">26.25sp</dimen>
+    <dimen name="txt_36">27.0sp</dimen>
+    <dimen name="txt_40">30.0sp</dimen>
+    <dimen name="txt_41">30.75sp</dimen>
+    <dimen name="txt_42">31.5sp</dimen>
+    <dimen name="txt_45">33.75sp</dimen>
+    <dimen name="txt_50">37.5sp</dimen>
+    <dimen name="txt_53">39.75sp</dimen>
+    <dimen name="txt_59">44.25sp</dimen>
+    <dimen name="txt_60">45.0sp</dimen>
+    <dimen name="txt_size_very_small">9.0sp</dimen>
+    <dimen name="txt_size_small">10.5sp</dimen>
+    <dimen name="txt_size_medium">12.75sp</dimen>
+    <dimen name="txt_size_big">15.0sp</dimen>
+    <dimen name="tab_txt_size">14.25sp</dimen>
+    <dimen name="enter_amount_font_txtsize">22.5sp</dimen>
+
 </resources>
