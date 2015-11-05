@@ -7,4 +7,11 @@
     <string name="app_title">Not a Tic-Tac-Toe</string>
     <string name="lets_pay_btn_txt">Let\'s play</string>
     <string name="title_activity_game_menu">GameMenuActivity</string>
+    <string name="title_activity_main_game">MainGameActivity</string>
+
+
+    <!-- Game Screen-->
+    <string name="player_one_tuen_txt">Player 1 Turn</string>
+    <string name="player_two_tuen_txt">Player 2 Turn</string>
+
 </resources>
