@@ -3,6 +3,17 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
+
+
     </style>
 
+    <style name="cell_style">
+        <item name="android:gravity">center</item>
+        <item name= "android:layout_width">@dimen/dim_35</item>
+        <item name= "android:layout_height">@dimen/dim_35</item>
+        <item name="android:layout_margin">@dimen/dim_1</item>
+        <item name="android:background">@color/light_brown</item>
+        <item name= "android:padding">@dimen/dim_5</item>
+        <item name=  "android:layout_weight">1</item>
+    </style>
 </resources>
