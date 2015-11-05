@@ -14,4 +14,6 @@
     <string name="player_one_tuen_txt">Player 1 Turn</string>
     <string name="player_two_tuen_txt">Player 2 Turn</string>
 
+    <string name="house_play_info_tv">You have to play in House No. = </string>
+
 </resources>

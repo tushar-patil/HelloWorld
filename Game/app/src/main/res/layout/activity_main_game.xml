@@ -13,10 +13,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="PLayer"
         android:textColor="@android:color/black"
         android:textSize="@dimen/txt_18"
         android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/house_play_info_tv"
+        android:layout_below="@+id/player_turn_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/txt_16"
+        android:textStyle="normal"/>
 
     <TableLayout
         android:id="@+id/table"

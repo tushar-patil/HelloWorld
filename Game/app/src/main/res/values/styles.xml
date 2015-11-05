@@ -15,5 +15,7 @@
         <item name="android:background">@color/light_brown</item>
         <item name= "android:padding">@dimen/dim_5</item>
         <item name=  "android:layout_weight">1</item>
+        <item name="android:clickable">false</item>
+        <item name="android:enabled">false</item>+
     </style>
 </resources>
