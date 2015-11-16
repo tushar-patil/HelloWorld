@@ -2,7 +2,6 @@ package com.example.tushar.myapplication.GameScreen;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -10,8 +9,10 @@ import android.widget.TableLayout;
 import android.widget.TextView;
 
 import com.example.tushar.myapplication.R;
+import com.example.tushar.myapplication.Utils.LogUtil;
 
 public class MainGameActivity extends Activity {
+    private static final String TAG = MainGameActivity.class.getSimpleName();
 
     private TextView mPlayerTurnTextView = null;
     private PLAYER_TURN mTurnOfPlayer = null;
@@ -40,6 +41,9 @@ public class MainGameActivity extends Activity {
             this.mPLAYER_TURN = i;
         }
     }
+
+    private int mHouseWinnerArray[]= new int[9];
+    private int mCurrentHouseInt = -1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,9 +94,9 @@ public class MainGameActivity extends Activity {
         ImageView imageView = (ImageView) v;
         if (imageView.isEnabled()) {
             TableLayout gotHouse = (TableLayout) ((ViewGroup) v.getParent()).getParent();
-            Log.d("gameDebug", "Got House = " + gotHouse.getId() + "Current House" + mCurrentHouse.getId());
-            Log.d("gameDebug", "Got House = " + gotHouse.toString());
-            Log.d("gameDebug", "Current House = " + mCurrentHouse.toString());
+            LogUtil.d(TAG, "Got House = " + gotHouse.getId() + "Current House" + mCurrentHouse.getId());
+            LogUtil.d(TAG, "Got House = " + gotHouse.toString());
+            LogUtil.d(TAG, "Current House = " + mCurrentHouse.toString());
             if (!gotHouse.equals(mCurrentHouse)) {
                 return;
             }
@@ -106,11 +110,7 @@ public class MainGameActivity extends Activity {
                 mTurnOfPlayer = PLAYER_TURN.ONE;
             }
             imageView.setEnabled(false);
-            mCurrentHouse.setEnabled(false);
-            mFirstHouse.setEnabled(true);
-            mCurrentHouse = mFirstHouse;
-            mHousePlayInfoTextView.setText(getResources().getString(R.string.house_play_info_tv) + " 1");
-
+            initializationsAfterClick(1, mFirstHouse);
         }
     }
 
@@ -118,9 +118,9 @@ public class MainGameActivity extends Activity {
         ImageView imageView = (ImageView) v;
         if (imageView.isEnabled()) {
             TableLayout gotHouse = (TableLayout) ((ViewGroup) v.getParent()).getParent();
-            Log.d("gameDebug", "Got House = " + gotHouse.getId() + "Current House" + mCurrentHouse.getId());
-            Log.d("gameDebug", "Got House = " + gotHouse.toString());
-            Log.d("gameDebug", "Current House = " + mCurrentHouse.toString());
+            LogUtil.d(TAG, "Got House = " + gotHouse.getId() + "Current House" + mCurrentHouse.getId());
+            LogUtil.d(TAG, "Got House = " + gotHouse.toString());
+            LogUtil.d(TAG, "Current House = " + mCurrentHouse.toString());
             if (!gotHouse.equals(mCurrentHouse)) {
                 return;
             }
@@ -137,10 +137,7 @@ public class MainGameActivity extends Activity {
 
             }
             imageView.setEnabled(false);
-            mCurrentHouse.setEnabled(false);
-            mSecondHouse.setEnabled(true);
-            mCurrentHouse = mSecondHouse;
-            mHousePlayInfoTextView.setText(getResources().getString(R.string.house_play_info_tv) + " 2");
+            initializationsAfterClick(2, mSecondHouse);
         }
     }
 
@@ -148,9 +145,9 @@ public class MainGameActivity extends Activity {
         ImageView imageView = (ImageView) v;
         if (imageView.isEnabled()) {
             TableLayout gotHouse = (TableLayout) ((ViewGroup) v.getParent()).getParent();
-            Log.d("gameDebug", "Got House = " + gotHouse.getId() + "Current House" + mCurrentHouse.getId());
-            Log.d("gameDebug", "Got House = " + gotHouse.toString());
-            Log.d("gameDebug", "Current House = " + mCurrentHouse.toString());
+            LogUtil.d(TAG, "Got House = " + gotHouse.getId() + "Current House" + mCurrentHouse.getId());
+            LogUtil.d(TAG, "Got House = " + gotHouse.toString());
+            LogUtil.d(TAG, "Current House = " + mCurrentHouse.toString());
             if (!gotHouse.equals(mCurrentHouse)) {
                 return;
             }
@@ -168,10 +165,7 @@ public class MainGameActivity extends Activity {
 
             }
             imageView.setEnabled(false);
-            mCurrentHouse.setEnabled(false);
-            mThirdHouse.setEnabled(true);
-            mCurrentHouse = mThirdHouse;
-            mHousePlayInfoTextView.setText(getResources().getString(R.string.house_play_info_tv) + " 3");
+            initializationsAfterClick(3, mThirdHouse);
         }
     }
 
@@ -179,9 +173,9 @@ public class MainGameActivity extends Activity {
         ImageView imageView = (ImageView) v;
         if (imageView.isEnabled()) {
             TableLayout gotHouse = (TableLayout) ((ViewGroup) v.getParent()).getParent();
-            Log.d("gameDebug", "Got House = " + gotHouse.getId() + "Current House" + mCurrentHouse.getId());
-            Log.d("gameDebug", "Got House = " + gotHouse.toString());
-            Log.d("gameDebug", "Current House = " + mCurrentHouse.toString());
+            LogUtil.d(TAG, "Got House = " + gotHouse.getId() + "Current House" + mCurrentHouse.getId());
+            LogUtil.d(TAG, "Got House = " + gotHouse.toString());
+            LogUtil.d(TAG, "Current House = " + mCurrentHouse.toString());
             if (!gotHouse.equals(mCurrentHouse)) {
                 return;
             }
@@ -199,10 +193,7 @@ public class MainGameActivity extends Activity {
 
             }
             imageView.setEnabled(false);
-            mCurrentHouse.setEnabled(false);
-            mFourthHouse.setEnabled(true);
-            mCurrentHouse = mFourthHouse;
-            mHousePlayInfoTextView.setText(getResources().getString(R.string.house_play_info_tv) + " 4");
+            initializationsAfterClick(4, mFourthHouse);
         }
     }
 
@@ -211,9 +202,9 @@ public class MainGameActivity extends Activity {
         ImageView imageView = (ImageView) v;
         if (imageView.isEnabled()) {
             TableLayout gotHouse = (TableLayout) ((ViewGroup) v.getParent()).getParent();
-            Log.d("gameDebug", "Got House = " + gotHouse.getId() + "Current House" + mCurrentHouse.getId());
-            Log.d("gameDebug", "Got House = " + gotHouse.toString());
-            Log.d("gameDebug", "Current House = " + mCurrentHouse.toString());
+            LogUtil.d(TAG, "Got House = " + gotHouse.getId() + "Current House" + mCurrentHouse.getId());
+            LogUtil.d(TAG, "Got House = " + gotHouse.toString());
+            LogUtil.d(TAG, "Current House = " + mCurrentHouse.toString());
             if (!gotHouse.equals(mCurrentHouse)) {
                 return;
             }
@@ -232,10 +223,7 @@ public class MainGameActivity extends Activity {
 
             }
             imageView.setEnabled(false);
-            mCurrentHouse.setEnabled(false);
-            mFifthHouse.setEnabled(true);
-            mCurrentHouse = mFifthHouse;
-            mHousePlayInfoTextView.setText(getResources().getString(R.string.house_play_info_tv) + " 5");
+            initializationsAfterClick(5, mFifthHouse);
         }
     }
 
@@ -243,9 +231,9 @@ public class MainGameActivity extends Activity {
         ImageView imageView = (ImageView) v;
         if (imageView.isEnabled()) {
             TableLayout gotHouse = (TableLayout) ((ViewGroup) v.getParent()).getParent();
-            Log.d("gameDebug", "Got House = " + gotHouse.getId() + "Current House" + mCurrentHouse.getId());
-            Log.d("gameDebug", "Got House = " + gotHouse.toString());
-            Log.d("gameDebug", "Current House = " + mCurrentHouse.toString());
+            LogUtil.d(TAG, "Got House = " + gotHouse.getId() + "Current House" + mCurrentHouse.getId());
+            LogUtil.d(TAG, "Got House = " + gotHouse.toString());
+            LogUtil.d(TAG, "Current House = " + mCurrentHouse.toString());
             if (!gotHouse.equals(mCurrentHouse)) {
                 return;
             }
@@ -263,11 +251,7 @@ public class MainGameActivity extends Activity {
 
             }
             imageView.setEnabled(false);
-            mCurrentHouse.setEnabled(false);
-            mSixthHouse.setEnabled(true);
-            mCurrentHouse = mSixthHouse;
-            mHousePlayInfoTextView.setText(getResources().getString(R.string.house_play_info_tv) + " 6");
-
+            initializationsAfterClick(6, mSixthHouse);
         }
     }
 
@@ -275,9 +259,9 @@ public class MainGameActivity extends Activity {
         ImageView imageView = (ImageView) v;
         if (imageView.isEnabled()) {
             TableLayout gotHouse = (TableLayout) ((ViewGroup) v.getParent()).getParent();
-            Log.d("gameDebug", "Got House = " + gotHouse.getId() + "Current House" + mCurrentHouse.getId());
-            Log.d("gameDebug", "Got House = " + gotHouse.toString());
-            Log.d("gameDebug", "Current House = " + mCurrentHouse.toString());
+            LogUtil.d(TAG, "Got House = " + gotHouse.getId() + "Current House" + mCurrentHouse.getId());
+            LogUtil.d(TAG, "Got House = " + gotHouse.toString());
+            LogUtil.d(TAG, "Current House = " + mCurrentHouse.toString());
             if (!gotHouse.equals(mCurrentHouse)) {
                 return;
             }
@@ -295,10 +279,8 @@ public class MainGameActivity extends Activity {
 
             }
             imageView.setEnabled(false);
-            mCurrentHouse.setEnabled(false);
-            mSeventhHouse.setEnabled(true);
-            mCurrentHouse = mSeventhHouse;
-            mHousePlayInfoTextView.setText(getResources().getString(R.string.house_play_info_tv) + " 7");
+            initializationsAfterClick(7, mSeventhHouse);
+
         }
     }
 
@@ -306,9 +288,9 @@ public class MainGameActivity extends Activity {
         ImageView imageView = (ImageView) v;
         if (imageView.isEnabled()) {
             TableLayout gotHouse = (TableLayout) ((ViewGroup) v.getParent()).getParent();
-            Log.d("gameDebug", "Got House = " + gotHouse.getId() + "Current House" + mCurrentHouse.getId());
-            Log.d("gameDebug", "Got House = " + gotHouse.toString());
-            Log.d("gameDebug", "Current House = " + mCurrentHouse.toString());
+            LogUtil.d(TAG, "Got House = " + gotHouse.getId() + "Current House" + mCurrentHouse.getId());
+            LogUtil.d(TAG, "Got House = " + gotHouse.toString());
+            LogUtil.d(TAG, "Current House = " + mCurrentHouse.toString());
             if (!gotHouse.equals(mCurrentHouse)) {
                 return;
             }
@@ -326,10 +308,7 @@ public class MainGameActivity extends Activity {
 
             }
             imageView.setEnabled(false);
-            mCurrentHouse.setEnabled(false);
-            mEigthHouse.setEnabled(true);
-            mCurrentHouse = mEigthHouse;
-            mHousePlayInfoTextView.setText(getResources().getString(R.string.house_play_info_tv) + " 8");
+            initializationsAfterClick(8, mEigthHouse);
         }
     }
 
@@ -337,9 +316,9 @@ public class MainGameActivity extends Activity {
         ImageView imageView = (ImageView) v;
         if (imageView.isEnabled()) {
             TableLayout gotHouse = (TableLayout) ((ViewGroup) v.getParent()).getParent();
-            Log.d("gameDebug", "Got House = " + gotHouse.getId() + "Current House" + mCurrentHouse.getId());
-            Log.d("gameDebug", "Got House = " + gotHouse.toString());
-            Log.d("gameDebug", "Current House = " + mCurrentHouse.toString());
+            LogUtil.d(TAG, "Got House = " + gotHouse.getId() + "Current House" + mCurrentHouse.getId());
+            LogUtil.d(TAG, "Got House = " + gotHouse.toString());
+            LogUtil.d(TAG, "Current House = " + mCurrentHouse.toString());
 
             if (!gotHouse.equals(mCurrentHouse)) {
                 return;
@@ -357,10 +336,38 @@ public class MainGameActivity extends Activity {
 
             }
             imageView.setEnabled(false);
-            mCurrentHouse.setEnabled(false);
-            mNinthHouse.setEnabled(true);
-            mCurrentHouse = mNinthHouse;
-            mHousePlayInfoTextView.setText(getResources().getString(R.string.house_play_info_tv) + " 9");
+            initializationsAfterClick(9, mNinthHouse);
         }
+    }
+
+    boolean isGameWon() {
+
+        return false;
+    }
+
+    boolean isCurrentHouseWon() {
+
+        if (((ImageView) mCurrentHouse.getChildAt(0)).getDrawable().getConstantState() ==
+                ((ImageView) mCurrentHouse.getChildAt(1)).getDrawable().getConstantState() &&
+                ((ImageView) mCurrentHouse.getChildAt(1)).getDrawable().getConstantState() ==
+                        ((ImageView) mCurrentHouse.getChildAt(2)).getDrawable().getConstantState()) {
+
+            return true;
+        } else if (((ImageView) mCurrentHouse.getChildAt(4)).getDrawable().getConstantState() ==
+                ((ImageView) mCurrentHouse.getChildAt(5)).getDrawable().getConstantState() &&
+                ((ImageView) mCurrentHouse.getChildAt(5)).getDrawable().getConstantState() ==
+                        ((ImageView) mCurrentHouse.getChildAt(6)).getDrawable().getConstantState()) {
+            return true;
+        }
+        return false;
+    }
+
+    void initializationsAfterClick(int nextHouseInt, TableLayout nextHouse) {
+        mCurrentHouse.setEnabled(false);
+        nextHouse.setEnabled(true);
+        mCurrentHouse = nextHouse;
+        mCurrentHouseInt = nextHouseInt;
+        mHousePlayInfoTextView.setText(getResources().getString(R.string.house_play_info_tv) + " " + nextHouseInt + " ");
+
     }
 }
