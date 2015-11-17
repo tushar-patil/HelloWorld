@@ -1,9 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Default screen margins, per the Android Design guidelines. -->
-    <dimen name="activity_horizontal_margin">16dp</dimen>
-    <dimen name="activity_vertical_margin">16dp</dimen>
 
-    <!-- dimens -->
+
+    <!-- regular dimens -->
     <!-- regular dimens -->
     <dimen name="dim_0">0.0dp</dimen>
     <dimen name="dim_0.1">0.075dp</dimen>
@@ -171,6 +170,7 @@
     <dimen name="negative_dim_47">-35.25dp</dimen>
     <dimen name="negative_dim_10">-7.25dp</dimen>
 
+
     <!-- txt sizes -->
     <dimen name="txt_6">6sp</dimen>
     <dimen name="txt_7">7sp</dimen>
@@ -211,5 +211,137 @@
     <dimen name="txt_size_big">15.0sp</dimen>
     <dimen name="tab_txt_size">14.25sp</dimen>
     <dimen name="enter_amount_font_txtsize">22.5sp</dimen>
+
+    <!-- Split Bill -->
+    <dimen name="close_btn_size">30dp</dimen>
+    <dimen name="fastacash_image_size">150dp</dimen>
+    <dimen name="select_friends_size">40dp</dimen>
+    <dimen name="member_img_size">40dp</dimen>
+    <dimen name="search_image_size">22dp</dimen>
+    <dimen name="spcomment_image_size">20dp</dimen>
+    <dimen name="spreview_image_size">45dp</dimen>
+    <dimen name="newbill_image_size">90dp</dimen>
+    <dimen name="newBill_top_margin">20dp</dimen>
+    <dimen name="amount_realy_top_margin">20dp</dimen>
+    <dimen name="event_image_size">80dp</dimen>
+    <dimen name="event_bill_image_size">80dp</dimen>
+    <dimen name="favaurite_image_size">25dp</dimen>
+    <dimen name="Add_connent_size">30dp</dimen>
+    <dimen name="vertical_list_image_size">3dp</dimen>
+    <dimen name="alert_image_size">12dp</dimen>
+    <dimen name="group_img_size">40dp</dimen>
+
+    <!-- Expense Manager -->
+    <dimen name="expense_back_arrow_size">25dp</dimen>
+    <dimen name="em_tab_margin">94dp</dimen>
+    <dimen name="expense_close_button_size">23dp</dimen>
+    <dimen name="expand_icon_size">18dp</dimen>
+    <dimen name="expense_margin_top">12dp</dimen>
+    <dimen name="icon_calendar_size">20dp</dimen>
+    <dimen name="detail_icon_image_size">30dp</dimen>
+    <dimen name="icon_image_size">53dp</dimen>
+    <dimen name="EditText_marginTop">-8dp</dimen>
+
+    <!-- Splash Screen -->
+    <dimen name="splash_logo_size">110dp</dimen>
+    <dimen name="splash_logo_large_size">130dp</dimen>
+
+    <!-- activity login -->
+    <dimen name="welcome_text_top_margin">70dp</dimen>
+    <dimen name="user_name_top_margin">15dp</dimen>
+    <dimen name="user_id_password_relat_top_margin">70dp</dimen>
+    <dimen name="forgot_password_relay_top_margin">10dp</dimen>
+
+    <!-- activity non registered existing landing screen -->
+    <dimen name="logo_size">90dp</dimen>
+    <dimen name="logo_top_margin">60dp</dimen>
+    <dimen name="sign_in_text_top_margin">20dp</dimen>
+    <dimen name="i_want_to_join_top_margin">40dp</dimen>
+    <dimen name="i_am_existing_customer_top_margin">10dp</dimen>
+    <dimen name="take_a_tour_margin_top">40dp</dimen>
+    <dimen name="created_by_top_margin">40dp</dimen>
+    <dimen name="sound_pin_top_margin">80dp</dimen>
+
+    <!-- activity non registered signup -->
+    <dimen name="back_arrow_size">30dp</dimen>
+    <dimen name="close_button_size">25dp</dimen>
+    <dimen name="name_margin_top">10dp</dimen>
+    <dimen name="email_top_margin">15dp</dimen>
+    <dimen name="date_of_birth_top_margin">15dp</dimen>
+    <dimen name="calendar_image_size">15dp</dimen>
+    <dimen name="hotel_search_image_size">15dp</dimen>
+    <dimen name="question_top_margin">15dp</dimen>
+    <dimen name="answer_top_margin">15dp</dimen>
+
+    <!-- activity register netbanking -->
+    <dimen name="register_with_bank_relay_margin_top">40dp</dimen>
+    <dimen name="register_with_bank_relay_padding_bottom">70dp</dimen>
+    <dimen name="register_or_text_margin_top">30dp</dimen>
+
+    <!-- activity non registered existing customer -->
+    <dimen name="mobile_number_relat_top_margin">60dp</dimen>
+
+    <!-- activity book_bus_start -->
+    <dimen name="search_bus_relay_top_margin">70dp</dimen>
+    <dimen name="from_location_margin_top">15dp</dimen>
+    <dimen name="to_location_margin_top">15dp</dimen>
+    <dimen name="number_of_seats_margin_top">15dp</dimen>
+    <dimen name="departure_margin_top">15dp</dimen>
+    <dimen name="return_margin_top">15dp</dimen>
+    <dimen name="class_margin_top">15dp</dimen>
+
+    <!-- activity bus shopping seats -->
+    <dimen name="continue_booking_relay_top_margin">10dp</dimen>
+
+
+    <!-- Load Money -->
+    <dimen name="add_contact_conformation_seperator_hight_width">1dp</dimen>
+    <dimen name="popup_success_symbol_hight_width">50dp</dimen>
+
+    <!-- Insta Credit -->
+    <dimen name="parent_height30">30dp</dimen>
+    <dimen name="parent_height50">50dp</dimen>
+    <dimen name="parent_height70">70dp</dimen>
+
+    <!-- Shop Movies -->
+    <dimen name="movie_thumbnail_height">180dp</dimen>
+    <dimen name="movie_search_margin_left_right">17dp</dimen>
+    <dimen name="movie_search_margin_top">8dp</dimen>
+    <dimen name="movie_filter_height">1.2dp</dimen>
+    <dimen name="movie_language_text_size">16sp</dimen>
+    <dimen name="movie_name_text_size">14sp</dimen>
+    <dimen name="movie_search_title_text_size">13sp</dimen>
+    <dimen name="movie_search_text_size">19sp</dimen>
+    <dimen name="movie_filter_text_size">18sp</dimen>
+    <dimen name="movie_filter_white_arrow_right_size">18dp</dimen>
+    <dimen name="movie_filter_submit_button_size">150dp</dimen>
+    <dimen name="date_card_insets">1dp</dimen>
+    <dimen name="timeslot_margin_bottom">18dp</dimen>
+    <dimen name="movie_info_thumbnail_margin">17dp</dimen>
+    <dimen name="movie_info_thumbnail_height">140dp</dimen>
+    <dimen name="rating_percentage_corner">20dp</dimen>
+
+    <!-- P2A -->
+    <dimen name="account_image_size">18dp</dimen>
+    <dimen name="account_image_size2">15dp</dimen>
+    <dimen name="Bill_image_size">100dp</dimen>
+    <dimen name="member_image_size">40dp</dimen>
+    <dimen name="group_image_size">50dp</dimen>
+    <dimen name="change_textview_size">14sp</dimen>
+
+    <!-- activity shopping hotel -->
+    <dimen name="search_hotel_top_margin">70dp</dimen>
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <!-- activity goal success -->
+    <dimen name="review_image_size">60dp</dimen>
+    <dimen name="comment_image_size">20dp</dimen>
+
+
+    <dimen name="soundpay_pin_top_margin">95dp</dimen>
+
+    <!-- Buy Hatke -->
+    <dimen name="bh_filter_height">1.2dp</dimen>
 
 </resources>

@@ -6,11 +6,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TableLayout;
-import android.widget.TableRow;
 import android.widget.TextView;
 
 import com.example.tushar.myapplication.R;
-import com.example.tushar.myapplication.Utils.AlertDialog;
 import com.example.tushar.myapplication.Utils.LogUtil;
 
 public class MainGameActivity extends Activity {
@@ -47,9 +45,6 @@ public class MainGameActivity extends Activity {
     private int mHouseWinnerArray[] = new int[9];
     private int mCurrentHouseInt = -1;
 
-    private int PLAYER_ONE = 1;
-    private int PLAYER_TWO = 2;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,7 +58,6 @@ public class MainGameActivity extends Activity {
 
         mFirstHouse.setClickable(true);
         mCurrentHouse = mFirstHouse;
-        mCurrentHouseInt = 1;
     }
 
     private void initView() {
@@ -109,6 +103,7 @@ public class MainGameActivity extends Activity {
             if (mTurnOfPlayer == PLAYER_TURN.ONE) {
                 imageView.setImageResource(R.drawable.empty_dot);
                 imageView.setTag(PLAYER_TURN.ONE);
+                ;
                 mPlayerTurnTextView.setText(getResources().getString(R.string.player_two_tuen_txt));
                 mTurnOfPlayer = PLAYER_TURN.TWO;
             } else {
@@ -135,6 +130,7 @@ public class MainGameActivity extends Activity {
             if (mTurnOfPlayer == PLAYER_TURN.ONE) {
                 imageView.setImageResource(R.drawable.empty_dot);
                 imageView.setTag(PLAYER_TURN.ONE);
+                ;
                 mPlayerTurnTextView.setText(getResources().getString(R.string.player_two_tuen_txt));
 
                 mTurnOfPlayer = PLAYER_TURN.TWO;
@@ -164,8 +160,11 @@ public class MainGameActivity extends Activity {
             if (mTurnOfPlayer == PLAYER_TURN.ONE) {
                 imageView.setImageResource(R.drawable.empty_dot);
                 imageView.setTag(PLAYER_TURN.ONE);
+                ;
                 mPlayerTurnTextView.setText(getResources().getString(R.string.player_two_tuen_txt));
+
                 mTurnOfPlayer = PLAYER_TURN.TWO;
+
             } else {
                 imageView.setImageResource(R.drawable.cross);
                 imageView.setTag(PLAYER_TURN.TWO);
@@ -192,6 +191,7 @@ public class MainGameActivity extends Activity {
             if (mTurnOfPlayer == PLAYER_TURN.ONE) {
                 imageView.setImageResource(R.drawable.empty_dot);
                 imageView.setTag(PLAYER_TURN.ONE);
+                ;
                 mPlayerTurnTextView.setText(getResources().getString(R.string.player_two_tuen_txt));
 
                 mTurnOfPlayer = PLAYER_TURN.TWO;
@@ -223,6 +223,7 @@ public class MainGameActivity extends Activity {
             if (mTurnOfPlayer == PLAYER_TURN.ONE) {
                 imageView.setImageResource(R.drawable.empty_dot);
                 imageView.setTag(PLAYER_TURN.ONE);
+                ;
                 mPlayerTurnTextView.setText(getResources().getString(R.string.player_two_tuen_txt));
 
 
@@ -254,6 +255,7 @@ public class MainGameActivity extends Activity {
             if (mTurnOfPlayer == PLAYER_TURN.ONE) {
                 imageView.setImageResource(R.drawable.empty_dot);
                 imageView.setTag(PLAYER_TURN.ONE);
+                ;
                 mPlayerTurnTextView.setText(getResources().getString(R.string.player_two_tuen_txt));
 
                 mTurnOfPlayer = PLAYER_TURN.TWO;
@@ -284,6 +286,7 @@ public class MainGameActivity extends Activity {
             if (mTurnOfPlayer == PLAYER_TURN.ONE) {
                 imageView.setImageResource(R.drawable.empty_dot);
                 imageView.setTag(PLAYER_TURN.ONE);
+                ;
                 mPlayerTurnTextView.setText(getResources().getString(R.string.player_two_tuen_txt));
 
                 mTurnOfPlayer = PLAYER_TURN.TWO;
@@ -292,7 +295,9 @@ public class MainGameActivity extends Activity {
                 imageView.setImageResource(R.drawable.cross);
                 imageView.setTag(PLAYER_TURN.TWO);
                 mPlayerTurnTextView.setText(getResources().getString(R.string.player_one_tuen_txt));
+
                 mTurnOfPlayer = PLAYER_TURN.ONE;
+
             }
             imageView.setEnabled(false);
             initializationsAfterClick(7, mSeventhHouse);
@@ -314,14 +319,15 @@ public class MainGameActivity extends Activity {
                 imageView.setImageResource(R.drawable.empty_dot);
                 imageView.setTag(PLAYER_TURN.ONE);
                 mPlayerTurnTextView.setText(getResources().getString(R.string.player_two_tuen_txt));
-
                 mTurnOfPlayer = PLAYER_TURN.TWO;
 
             } else {
                 imageView.setImageResource(R.drawable.cross);
                 imageView.setTag(PLAYER_TURN.TWO);
                 mPlayerTurnTextView.setText(getResources().getString(R.string.player_one_tuen_txt));
+
                 mTurnOfPlayer = PLAYER_TURN.ONE;
+
             }
             imageView.setEnabled(false);
             initializationsAfterClick(8, mEigthHouse);
@@ -343,7 +349,6 @@ public class MainGameActivity extends Activity {
                 imageView.setImageResource(R.drawable.empty_dot);
                 imageView.setTag(PLAYER_TURN.ONE);
                 mPlayerTurnTextView.setText(getResources().getString(R.string.player_two_tuen_txt));
-
                 mTurnOfPlayer = PLAYER_TURN.TWO;
 
             } else {
@@ -358,144 +363,35 @@ public class MainGameActivity extends Activity {
         }
     }
 
-    private boolean isGameWon() {
+    boolean isGameWon() {
 
-        setResultCurrentHouse();
-        int housesWonByPlayer1 = 0, housesWonByPlayer2 = 0;
-        LogUtil.d(TAG, "HouseWinterArray -> ");
-        for (int counter = 0; counter < 9; counter++) {
-            LogUtil.d(TAG, "mHouseWinnerArray[" + counter + "] = " +
-                    mHouseWinnerArray[counter]);
-            if (mHouseWinnerArray[counter] == PLAYER_ONE) {
-                housesWonByPlayer1++;
-            } else if (mHouseWinnerArray[counter] == PLAYER_TWO) {
-                housesWonByPlayer2++;
-            }
-        }
+        return false;
+    }
 
-        if (housesWonByPlayer1 >= 5) {
-            AlertDialog.showWinningDialog(this, "Congratulations!!", "Player 1 won the Game", "Ok",
-                    new AlertDialog.WinDialogOkListener() {
-                        @Override
-                        public void onOkClick() {
-                            finish();
-                        }
-                    });
+    boolean isCurrentHouseWon() {
+
+        if (((ImageView) mCurrentHouse.getChildAt(0)).getDrawable().getConstantState() ==
+                ((ImageView) mCurrentHouse.getChildAt(1)).getDrawable().getConstantState() &&
+                ((ImageView) mCurrentHouse.getChildAt(1)).getDrawable().getConstantState() ==
+                        ((ImageView) mCurrentHouse.getChildAt(2)).getDrawable().getConstantState()) {
+
             return true;
-        } else if (housesWonByPlayer2 >= 5) {
-            AlertDialog.showWinningDialog(this, "Congratulations!!", "Player 2 won the Game", "Ok",
-                    new AlertDialog.WinDialogOkListener() {
-                        @Override
-                        public void onOkClick() {
-                            finish();
-                        }
-                    });
+        } else if (((ImageView) mCurrentHouse.getChildAt(4)).getDrawable().getConstantState() ==
+                ((ImageView) mCurrentHouse.getChildAt(5)).getDrawable().getConstantState() &&
+                ((ImageView) mCurrentHouse.getChildAt(5)).getDrawable().getConstantState() ==
+                        ((ImageView) mCurrentHouse.getChildAt(6)).getDrawable().getConstantState()) {
             return true;
         }
         return false;
     }
 
-    private void setResultCurrentHouse() {
-
-        if (mHouseWinnerArray[mCurrentHouseInt - 1] != 0) {
-            return;
-        }
-        TableRow firstRow = (TableRow) mCurrentHouse.getChildAt(0);
-        TableRow secondRow = (TableRow) mCurrentHouse.getChildAt(1);
-        TableRow thirdRow = (TableRow) mCurrentHouse.getChildAt(2);
-
-        LogUtil.d(TAG, "firstRow Id " + firstRow.getId());
-        LogUtil.d(TAG, "firstRow toString " + firstRow.toString());
-
-        LogUtil.d(TAG, "secondRow Id " + secondRow.getId());
-        LogUtil.d(TAG, "secondRow toString " + secondRow.toString());
-
-        LogUtil.d(TAG, "thirdRow Id " + thirdRow.getId());
-        LogUtil.d(TAG, "thirdRow toString " + thirdRow.toString());
-
-        if (isRowFilledBySamePlayer(firstRow)) {
-            setHouseWin((ImageView) firstRow.getChildAt(0));
-            return;
-        } else if (isRowFilledBySamePlayer(secondRow)) {
-            setHouseWin((ImageView) secondRow.getChildAt(0));
-            return;
-        } else if (isRowFilledBySamePlayer(thirdRow)) {
-            setHouseWin((ImageView) thirdRow.getChildAt(0));
-            return;
-        } else {
-            for (int i = 0; i < 3; i++)
-                if (isTheseImageviewsHasSameImage((ImageView) firstRow.getChildAt(i),
-                        (ImageView) secondRow.getChildAt(i), (ImageView) thirdRow.getChildAt(i))) {
-                    setHouseWin((ImageView) firstRow.getChildAt(i));
-                    return;
-                }
-        }
-
-        if (isTheseImageviewsHasSameImage((ImageView) firstRow.getChildAt(0),
-                (ImageView) secondRow.getChildAt(1), (ImageView) thirdRow.getChildAt(2))) {
-            setHouseWin((ImageView) firstRow.getChildAt(0));
-            return;
-        }
-
-        if (isTheseImageviewsHasSameImage((ImageView) firstRow.getChildAt(2),
-                (ImageView) secondRow.getChildAt(1), (ImageView) thirdRow.getChildAt(0))) {
-            setHouseWin((ImageView) firstRow.getChildAt(2));
-        }
-    }
-
     void initializationsAfterClick(int nextHouseInt, TableLayout nextHouse) {
-        if (!isGameWon()) {
-            mCurrentHouse.setEnabled(false);
-            nextHouse.setEnabled(true);
-            mCurrentHouse = nextHouse;
-            mCurrentHouseInt = nextHouseInt;
-            mHousePlayInfoTextView.setText(getResources().getString(R.string.house_play_info_tv) + " " + nextHouseInt + " ");
-        }
-    }
+        mCurrentHouse.setEnabled(false);
+        nextHouse.setEnabled(true);
+        mCurrentHouse = nextHouse;
+        mCurrentHouseInt = nextHouseInt;
+        mHousePlayInfoTextView.setText(getResources().getString(R.string.house_play_info_tv) + " " + nextHouseInt + " ");
 
-    boolean isRowFilledBySamePlayer(TableRow receivedRow) {
-        ImageView im1 = (ImageView) receivedRow.getChildAt(0);
-        ImageView im2 = (ImageView) receivedRow.getChildAt(1);
-        ImageView im3 = (ImageView) receivedRow.getChildAt(2);
-
-        if (im1.getDrawable() == null || im2.getDrawable() == null ||
-                im3.getDrawable() == null) {
-            return false;
-        }
-
-        LogUtil.d(TAG, "im1 ConstantState" +
-                ((ImageView) receivedRow.getChildAt(0)).getDrawable().getConstantState());
-
-        LogUtil.d(TAG, "im2 ConstantState()" +
-                ((ImageView) receivedRow.getChildAt(1)).getDrawable().getConstantState());
-
-        LogUtil.d(TAG, "im3 ConstantState()" +
-                ((ImageView) receivedRow.getChildAt(2)).getDrawable().getConstantState());
-
-        return ((im1.getDrawable().getConstantState() ==
-                im2.getDrawable().getConstantState()) &&
-                (im2.getDrawable().getConstantState() ==
-                        im3.getDrawable().getConstantState()));
-    }
-
-    boolean isTheseImageviewsHasSameImage(ImageView im1, ImageView im2, ImageView im3) {
-        if (im1.getDrawable() == null || im2.getDrawable() == null ||
-                im3.getDrawable() == null) {
-            return false;
-        }
-
-        return ((im1.getDrawable().getConstantState() ==
-                im2.getDrawable().getConstantState()) &&
-                (im2.getDrawable().getConstantState() ==
-                        im3.getDrawable().getConstantState()));
-    }
-
-    void setHouseWin(ImageView gotImage) {
-        LogUtil.d(TAG, "ImageView with Tag " + gotImage.getTag());
-        if (gotImage.getTag() == PLAYER_TURN.ONE) {
-            mHouseWinnerArray[mCurrentHouseInt - 1] = PLAYER_ONE;
-        } else if (gotImage.getTag() == PLAYER_TURN.TWO) {
-            mHouseWinnerArray[mCurrentHouseInt - 1] = PLAYER_TWO;
-        }
     }
 }
+

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <color name="faint_brown">#FBDFB8</color>
     <color name="light_brown">#EACEA7</color>
     <color name="dark_brown">#B5663F</color>
     <color name="extreme_dark_brown">#A5663F</color>
