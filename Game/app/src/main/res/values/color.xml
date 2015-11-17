@@ -7,4 +7,8 @@
     <color name="extreme_dark_brown">#A5663F</color>
     <color name="white">#FFFFFF</color>
     <color name="gray">#6D6D6D</color>
+
+    <color name="chocolaty_dark">#2E0B06</color>
+    <color name="chocolaty_light">#721E12</color>
+    <color name="faint_chocolaty">#F2D27B</color>
 </resources>

@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
@@ -33,6 +34,8 @@ public class MainGameActivity extends Activity {
     private TableLayout mEigthHouse = null;
     private TableLayout mNinthHouse = null;
 
+    private Button mUndoButton = null;
+
     private TableLayout mCurrentHouse = null;
 
     private enum PLAYER_TURN {
@@ -50,6 +53,8 @@ public class MainGameActivity extends Activity {
     private int PLAYER_ONE = 1;
     private int PLAYER_TWO = 2;
 
+    private float opacityLevel = 0.4f;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,6 +69,7 @@ public class MainGameActivity extends Activity {
         mFirstHouse.setClickable(true);
         mCurrentHouse = mFirstHouse;
         mCurrentHouseInt = 1;
+        mCurrentHouse.setAlpha(1f);
     }
 
     private void initView() {
@@ -82,6 +88,8 @@ public class MainGameActivity extends Activity {
         mSeventhHouse = (TableLayout) findViewById(R.id.house_7);
         mEigthHouse = (TableLayout) findViewById(R.id.house_8);
         mNinthHouse = (TableLayout) findViewById(R.id.house_9);
+
+        mUndoButton = (Button) findViewById(R.id.undo_btn);
 
         mSecondHouse.setEnabled(false);
         mThirdHouse.setEnabled(false);
@@ -445,8 +453,12 @@ public class MainGameActivity extends Activity {
 
     void initializationsAfterClick(int nextHouseInt, TableLayout nextHouse) {
         if (!isGameWon()) {
+            mCurrentHouse.setAlpha(opacityLevel);
             mCurrentHouse.setEnabled(false);
+
             nextHouse.setEnabled(true);
+            nextHouse.setAlpha(1);
+
             mCurrentHouse = nextHouse;
             mCurrentHouseInt = nextHouseInt;
             mHousePlayInfoTextView.setText(getResources().getString(R.string.house_play_info_tv) + " " + nextHouseInt + " ");

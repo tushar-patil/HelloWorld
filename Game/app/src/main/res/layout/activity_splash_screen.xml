@@ -40,5 +40,5 @@
         android:textColor="@color/white"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="@dimen/dim_35"
-        android:background="@color/extreme_dark_brown"/>
+        android:background="@color/chocolaty_dark"/>
 </RelativeLayout>
