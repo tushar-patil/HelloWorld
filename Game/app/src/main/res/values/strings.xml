@@ -1,13 +1,13 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">Not a Tic Tac Toe</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
 
     <string name="app_title">Not a Tic-Tac-Toe</string>
     <string name="lets_pay_btn_txt">Let\'s play</string>
-    <string name="title_activity_game_menu">GameMenuActivity</string>
-    <string name="title_activity_main_game">MainGameActivity</string>
+    <string name="title_activity_game_menu" translatable="false">GameMenuActivity</string>
+    <string name="title_activity_main_game" translatable="false">MainGameActivity</string>
 
 
     <!-- Game Screen-->
@@ -17,4 +17,31 @@
     <string name="house_play_info_tv">You have to play in House No. = </string>
     <string name="undo_txt">Undo</string>
 
+    <string name="congratulations">Congratulations!!</string>
+    <string name="player1_win">Player 1 won the Game</string>
+    <string name="player2_win">Player 2 won the Game</string>
+
+    <string name="ok">Ok</string>
+
+    <!-- Game Menu Screen -->
+    <string name="play_game">Play Game</string>
+    <string name="high_score">High Score</string>
+    <string name="settings">Settings</string>
+    <string name="help">Help</string>
+
+    <!-- Game Sub Menu Screen -->
+    <string name="one_player">Single Player</string>
+    <string name="two_player">Two Player</string>
+    <string name="two_player_over_wifi">Two Player Over WiFi</string>
+    <string name="title_activity_game_sub_menu">GameSubMenuActivity</string>
+    <string name="title_activity_wi_fi_device_list">WiFiDeviceListActivity</string>
+
+    <!-- WiFi Devices Screen -->
+    <string name="search_wifi_devices">Search WiFi Devices</string>
+    <string name="searching_devices">Searching WiFi Devices &#8230;</string>
+    <string name="p2p_off_warning">Enable P2P from action bar button above or system settings</string>
+    <string name="no_device_found">No Device Found</string>
+    <string name="search_again">Search again</string>
+    <!--Utils -->
+    <string name="please_wait">Please wait &#8230;</string>
 </resources>
