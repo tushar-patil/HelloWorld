@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">Not a Tic Tac Toe</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings"></string>
+
+    <string name="app_title">Not a Tic-Tac-Toe</string>
+    <string name="lets_pay_btn_txt">खेल शुरू </string>
+    <string name="title_activity_game_menu">GameMenuActivity</string>
+    <string name="title_activity_main_game">MainGameActivity</string>
+
+
+    <!-- Game Screen-->
+    <string name="player_one_tuen_txt">प्लेयर 1 की पारी</string>
+    <string name="player_two_tuen_txt">प्लेयर 2 की पारी</string>
+
+    <string name="house_play_info_tv">खेलने के लिए हाउस = </string>
+    <string name="undo_txt">Undo</string>
+
+    <string name="congratulations">अभिनंदन!!</string>
+    <string name="player1_win">प्लेयर 1 गेम जीत गये!!</string>
+    <string name="player2_win">प्लेयर 2 गेम जीत गये!!</string>
+
+    <string name="ok">ठीक</string>
+    <!-- Game Menu Screen -->
+    <string name="play_game">खेल शुरूवात </string>
+    <string name="high_score">उच्च स्कोर</string>
+    <string name="settings">सेटिंग्स</string>
+    <string name="help">मदद</string>
+</resources>
