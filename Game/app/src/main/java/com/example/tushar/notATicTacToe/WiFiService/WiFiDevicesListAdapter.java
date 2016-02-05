@@ -36,7 +36,7 @@ public class WiFiDevicesListAdapter extends BaseAdapter {
     }
 
     @Override
-    public Object getItem(int position) {
+    public WifiP2pDevice getItem(int position) {
         return mDevicList.get(position);
     }
 
@@ -64,7 +64,7 @@ public class WiFiDevicesListAdapter extends BaseAdapter {
         String devicName = "";
         String deviceDetails = "";
         if (device != null) {
-            devicName = device.deviceName;
+            deviceDetails = device.deviceName;
             if (device.deviceName.contains("Android_3f82"))
                 devicName = ("SamSung");
             else if (device.deviceName.contains("Android_c023"))
@@ -77,10 +77,10 @@ public class WiFiDevicesListAdapter extends BaseAdapter {
                 devicName = ("HTC-W");
             else if (device.deviceName.contains("Android_bc2d"))
                 devicName = ("HTC-ONE");
-            else {
-                devicName = "UNKNOWN DEVICE";
+            else if (device.deviceName != null) {
+                devicName = device.deviceName;
+                deviceDetails = device.deviceAddress;
             }
-            deviceDetails = device.deviceName;
         }
         holder.DevicName.setText(devicName);
         holder.DeviceDetails.setText(deviceDetails);

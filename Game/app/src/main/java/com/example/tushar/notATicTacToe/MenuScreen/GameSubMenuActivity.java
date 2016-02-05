@@ -9,8 +9,9 @@ import android.widget.ListView;
 
 import com.example.tushar.notATicTacToe.GameScreen.MainGameActivity;
 import com.example.tushar.notATicTacToe.R;
+import com.example.tushar.notATicTacToe.Utils.AlertDialog;
 import com.example.tushar.notATicTacToe.Utils.LogUtil;
-import com.example.tushar.notATicTacToe.WiFiService.WiFiDeviceListActivity;
+import com.example.tushar.notATicTacToe.WiFiService.WiFiMainGameActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -58,13 +59,18 @@ public class GameSubMenuActivity extends Activity {
         Intent intent = null;
         switch (position) {
             case 0:
+                AlertDialog.showWinningDialog(GameSubMenuActivity.this,
+                        getResources().getString(R.string.stay_tuned),
+                        getResources().getString(R.string.coming_soon),
+                        getResources().getString(R.string.ok),
+                        null);
                 break;
             case 1:
                 intent = new Intent(this, MainGameActivity.class);
                 startActivity(intent);
                 break;
             case 2:
-                intent = new Intent(this, WiFiDeviceListActivity.class);
+                intent = new Intent(this, WiFiMainGameActivity.class);
                 startActivity(intent);
                 break;
             case 3:

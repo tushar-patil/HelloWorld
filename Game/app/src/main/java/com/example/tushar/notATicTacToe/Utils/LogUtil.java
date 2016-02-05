@@ -15,8 +15,9 @@ public class LogUtil {
     public static void e(String tag, String msg) {
         if (DEBUG && msg != null) {
             Log.e(TAG, "[" + tag + "] - " + msg);
+        } else {
+            Log.e(TAG, "[" + tag + "] - " + "Message Null");
         }
-
     }
 
     /**
@@ -90,8 +91,10 @@ public class LogUtil {
      */
     public static void printStackTrace(Exception e) {
         if (DEBUG && e != null) {
-            Log.e(TAG, e.getMessage());
             e.printStackTrace();
+            if (e.getMessage() != null) {
+                Log.e(TAG, e.getMessage());
+            }
         }
     }
 
