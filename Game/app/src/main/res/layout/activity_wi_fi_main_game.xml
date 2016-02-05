@@ -1,0 +1,912 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/gradient_bg_main_game"
+                tools:context="com.example.tushar.myapplication.GameScreen.MainGameActivity">
+
+    <RelativeLayout
+        android:id="@+id/game_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/player_turn_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/txt_18"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/house_play_info_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/player_turn_text"
+            android:gravity="center"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/txt_16"
+            android:textStyle="normal"/>
+
+        <TableLayout
+            android:id="@+id/table"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:background="@color/extreme_dark_brown">
+
+            <TableRow
+                android:id="@+id/first_row"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                >
+
+                <TableLayout
+                    android:id="@+id/house_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/dim_3"
+                    android:background="@color/white">
+
+                    <TableRow
+                        android:id="@+id/house_1_row_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:weightSum="3"
+                        >
+
+                        <ImageView
+                            android:id="@+id/house_1_block_1"
+                            style="@style/cell_style"
+                            android:onClick="oneClick"
+                            />
+
+                        <!--<TextView
+                            android:id="@+id/line"
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            android:background="@android:color/black"/>-->
+
+                        <ImageView
+                            android:id="@+id/house_1_block_2"
+                            style="@style/cell_style"
+                            android:onClick="twoClick"
+                            />
+
+                        <ImageView
+                            android:id="@+id/house_1_block_3"
+                            style="@style/cell_style"
+                            android:onClick="threeClick"
+                            />
+                    </TableRow>
+
+                    <TableRow
+                        android:id="@+id/house_1_row_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        >
+
+                        <ImageView
+                            android:id="@+id/house_1_block_4"
+                            style="@style/cell_style"
+                            android:onClick="fourClick"
+                            />
+
+                        <ImageView
+                            android:id="@+id/house_1_block_5"
+                            style="@style/cell_style"
+                            android:onClick="fiveclick"
+                            />
+
+                        <ImageView
+                            android:id="@+id/house_1_block_6"
+                            style="@style/cell_style"
+                            android:onClick="sixClick"
+                            />
+                    </TableRow>
+
+                    <TableRow
+                        android:id="@+id/house_1_row_3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        >
+
+                        <ImageView
+                            android:id="@+id/house_1_block_7"
+                            style="@style/cell_style"
+                            android:onClick="sevenClick"
+
+                            />
+
+                        <ImageView
+                            android:id="@+id/house_1_block_8"
+                            style="@style/cell_style"
+                            android:onClick="eightClick"
+
+                            />
+
+                        <ImageView
+                            android:id="@+id/house_1_block_9"
+                            style="@style/cell_style"
+                            android:onClick="nineClick"
+
+                            />
+                    </TableRow>
+
+                </TableLayout>
+
+                <TableLayout
+                    android:id="@+id/house_2"
+                    android:layout_width="wrap_content"
+
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/dim_3"
+                    android:alpha="0.4"
+                    android:background="@color/white">
+
+                    <TableRow
+                        android:id="@+id/house_2_row_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        >
+
+                        <ImageView
+                            android:id="@+id/house_2_block_1"
+                            style="@style/cell_style"
+                            android:onClick="oneClick"
+
+                            />
+
+                        <ImageView
+                            android:id="@+id/house_2_block_2"
+                            style="@style/cell_style"
+                            android:onClick="twoClick"
+
+                            />
+
+                        <ImageView
+                            android:id="@+id/house_2_block_3"
+                            style="@style/cell_style"
+                            android:onClick="threeClick"
+
+                            />
+                    </TableRow>
+
+                    <TableRow
+                        android:id="@+id/house_2_row_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        >
+
+                        <ImageView
+                            android:id="@+id/house_2_block_4"
+                            style="@style/cell_style"
+                            android:onClick="fourClick"
+                            />
+
+                        <ImageView
+                            android:id="@+id/house_2_block_5"
+                            style="@style/cell_style"
+                            android:onClick="fiveclick"
+
+                            />
+
+                        <ImageView
+                            android:id="@+id/house_2_block_6"
+                            style="@style/cell_style"
+                            android:onClick="sixClick"
+
+                            />
+                    </TableRow>
+
+                    <TableRow
+                        android:id="@+id/house_2_row_3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        >
+
+                        <ImageView
+                            android:id="@+id/house_2_block_7"
+                            style="@style/cell_style"
+                            android:onClick="sevenClick"
+
+                            />
+
+                        <ImageView
+                            android:id="@+id/house_2_block_8"
+                            style="@style/cell_style"
+                            android:onClick="eightClick"
+
+                            />
+
+                        <ImageView
+                            android:id="@+id/house_2_block_9"
+                            style="@style/cell_style"
+                            android:onClick="nineClick"
+
+                            />
+                    </TableRow>
+                </TableLayout>
+
+                <TableLayout
+                    android:id="@+id/house_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/dim_3"
+                    android:alpha="0.4"
+                    android:background="@color/white"
+                    >
+
+                    <TableRow
+                        android:id="@+id/house_3_row_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        >
+
+                        <ImageView
+                            android:id="@+id/house_3_block_1"
+                            style="@style/cell_style"
+                            android:onClick="oneClick"
+
+                            />
+
+                        <ImageView
+                            android:id="@+id/house_3_block_2"
+                            style="@style/cell_style"
+                            android:onClick="twoClick"
+
+                            />
+
+                        <ImageView
+                            android:id="@+id/house_3_block_3"
+                            style="@style/cell_style"
+                            android:onClick="threeClick"
+
+                            />
+                    </TableRow>
+
+                    <TableRow
+                        android:id="@+id/house_3_row_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        >
+
+                        <ImageView
+                            android:id="@+id/house_3_block_4"
+                            style="@style/cell_style"
+                            android:onClick="fourClick"
+
+                            />
+
+                        <ImageView
+                            android:id="@+id/house_3_block_5"
+                            style="@style/cell_style"
+                            android:onClick="fiveclick"
+
+                            />
+
+                        <ImageView
+                            android:id="@+id/house_3_block_6"
+                            style="@style/cell_style"
+                            android:onClick="sixClick"
+
+                            />
+                    </TableRow>
+
+                    <TableRow
+                        android:id="@+id/house_3_row_3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        >
+
+                        <ImageView
+                            android:id="@+id/house_3_block_7"
+                            style="@style/cell_style"
+                            android:onClick="sevenClick"
+
+                            />
+
+                        <ImageView
+                            android:id="@+id/house_3_block_8"
+                            style="@style/cell_style"
+                            android:onClick="eightClick"
+
+                            />
+
+                        <ImageView
+                            android:id="@+id/house_3_block_9"
+                            style="@style/cell_style"
+                            android:onClick="nineClick"
+
+                            />
+                    </TableRow>
+                </TableLayout>
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/second_row"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TableLayout
+                    android:id="@+id/house_4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/dim_3"
+                    android:alpha="0.4"
+                    android:background="@color/white">
+
+                    <TableRow
+                        android:id="@+id/house_4row_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        >
+
+                        <ImageView
+                            android:id="@+id/house_4_block_1"
+                            style="@style/cell_style"
+                            android:onClick="oneClick"
+                            />
+
+                        <ImageView
+                            android:id="@+id/house_4_block_2"
+                            style="@style/cell_style"
+                            android:onClick="twoClick"
+
+                            />
+
+                        <ImageView
+                            android:id="@+id/house_4_block_3"
+                            style="@style/cell_style"
+                            android:onClick="threeClick"
+
+                            />
+                    </TableRow>
+
+                    <TableRow
+                        android:id="@+id/house_4_row_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        >
+
+                        <ImageView
+                            android:id="@+id/house_4_block_4"
+                            style="@style/cell_style"
+                            android:onClick="fourClick"
+
+                            />
+
+                        <ImageView
+                            android:id="@+id/house_4_block_5"
+                            style="@style/cell_style"
+                            android:onClick="fiveclick"
+
+                            />
+
+                        <ImageView
+                            android:id="@+id/house_4_block_6"
+                            style="@style/cell_style"
+                            android:onClick="sixClick"
+
+                            />
+                    </TableRow>
+
+                    <TableRow
+                        android:id="@+id/house_4_row_3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        >
+
+                        <ImageView
+                            android:id="@+id/house_4_block_7"
+                            style="@style/cell_style"
+                            android:onClick="sevenClick"
+
+                            />
+
+                        <ImageView
+                            android:id="@+id/house_4_block_8"
+                            style="@style/cell_style"
+                            android:onClick="eightClick"
+
+                            />
+
+                        <ImageView
+                            android:id="@+id/house_4_block_9"
+                            style="@style/cell_style"
+                            android:onClick="nineClick"
+
+                            />
+                    </TableRow>
+                </TableLayout>
+
+                <TableLayout
+                    android:id="@+id/house_5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/dim_3"
+                    android:alpha="0.4"
+                    android:background="@android:color/white">
+
+                    <TableRow
+                        android:id="@+id/house_5_row_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        >
+
+                        <ImageView
+                            android:id="@+id/house_5_block_1"
+                            style="@style/cell_style"
+                            android:onClick="oneClick"
+
+                            />
+
+                        <ImageView
+                            android:id="@+id/house_5_block_2"
+                            style="@style/cell_style"
+                            android:onClick="twoClick"
+
+                            />
+
+                        <ImageView
+                            android:id="@+id/house_5_block_3"
+                            style="@style/cell_style"
+                            android:onClick="threeClick"
+
+                            />
+                    </TableRow>
+
+                    <TableRow
+                        android:id="@+id/house_5_row_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        >
+
+                        <ImageView
+                            android:id="@+id/house_5_block_4"
+                            style="@style/cell_style"
+                            android:onClick="fourClick"
+
+                            />
+
+                        <ImageView
+                            android:id="@+id/house_5_block_5"
+                            style="@style/cell_style"
+                            android:onClick="fiveclick"
+
+                            />
+
+                        <ImageView
+                            android:id="@+id/house_5_block_6"
+                            style="@style/cell_style"
+                            android:onClick="sixClick"
+
+                            />
+                    </TableRow>
+
+                    <TableRow
+                        android:id="@+id/house_5_row_3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        >
+
+                        <ImageView
+                            android:id="@+id/house_5_block_7"
+                            style="@style/cell_style"
+                            android:onClick="sevenClick"
+
+                            />
+
+                        <ImageView
+                            android:id="@+id/house_5_block_8"
+                            style="@style/cell_style"
+                            android:onClick="eightClick"
+
+                            />
+
+                        <ImageView
+                            android:id="@+id/house_5_block_9"
+                            style="@style/cell_style"
+                            android:onClick="nineClick"
+
+                            />
+                    </TableRow>
+                </TableLayout>
+
+                <TableLayout
+                    android:id="@+id/house_6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/dim_3"
+                    android:alpha="0.4"
+                    android:background="@color/white">
+
+                    <TableRow
+                        android:id="@+id/house_6_row_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        >
+
+                        <ImageView
+                            android:id="@+id/house_6_block_1"
+                            style="@style/cell_style"
+                            android:onClick="oneClick"
+
+                            />
+
+                        <ImageView
+                            android:id="@+id/house_6_block_2"
+                            style="@style/cell_style"
+                            android:onClick="twoClick"
+
+                            />
+
+                        <ImageView
+                            android:id="@+id/house_6_block_3"
+                            style="@style/cell_style"
+                            android:onClick="threeClick"
+
+                            />
+                    </TableRow>
+
+                    <TableRow
+                        android:id="@+id/house_6_row_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        >
+
+                        <ImageView
+                            android:id="@+id/house_6_block_4"
+                            style="@style/cell_style"
+                            android:onClick="fourClick"
+
+                            />
+
+                        <ImageView
+                            android:id="@+id/house_6_block_5"
+                            style="@style/cell_style"
+                            android:onClick="fiveclick"
+
+                            />
+
+                        <ImageView
+                            android:id="@+id/house_6_block_6"
+                            style="@style/cell_style"
+                            android:onClick="sixClick"
+
+                            />
+                    </TableRow>
+
+                    <TableRow
+                        android:id="@+id/house_6_row_3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        >
+
+                        <ImageView
+                            android:id="@+id/house_6_block_7"
+                            style="@style/cell_style"
+                            android:onClick="sevenClick"
+
+                            />
+
+                        <ImageView
+                            android:id="@+id/house_6_block_8"
+                            style="@style/cell_style"
+                            android:onClick="eightClick"
+
+                            />
+
+                        <ImageView
+                            android:id="@+id/house_6_block_9"
+                            style="@style/cell_style"
+                            android:onClick="nineClick"
+
+                            />
+                    </TableRow>
+                </TableLayout>
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/third_row"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TableLayout
+                    android:id="@+id/house_7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/dim_3"
+                    android:alpha="0.4"
+                    android:background="@color/white">
+
+                    <TableRow
+                        android:id="@+id/house_7_row_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        >
+
+                        <ImageView
+                            android:id="@+id/house_7_block_1"
+                            style="@style/cell_style"
+                            android:onClick="oneClick"
+
+                            />
+
+                        <ImageView
+                            android:id="@+id/house_7_block_2"
+                            style="@style/cell_style"
+                            android:onClick="twoClick"
+
+                            />
+
+                        <ImageView
+                            android:id="@+id/house_7_block_3"
+                            style="@style/cell_style"
+                            android:onClick="threeClick"
+
+                            />
+                    </TableRow>
+
+                    <TableRow
+                        android:id="@+id/house_7_row_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        >
+
+                        <ImageView
+                            android:id="@+id/house_7_block_4"
+                            style="@style/cell_style"
+                            android:onClick="fourClick"
+
+                            />
+
+                        <ImageView
+                            android:id="@+id/house_7_block_5"
+                            style="@style/cell_style"
+                            android:onClick="fiveclick"
+
+                            />
+
+                        <ImageView
+                            android:id="@+id/house_7_block_6"
+                            style="@style/cell_style"
+                            android:onClick="sixClick"
+
+                            />
+                    </TableRow>
+
+                    <TableRow
+                        android:id="@+id/house_7_row_3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        >
+
+                        <ImageView
+                            android:id="@+id/house_7_block_7"
+                            style="@style/cell_style"
+                            android:onClick="sevenClick"
+                            />
+
+                        <ImageView
+                            android:id="@+id/house_7_block_8"
+                            style="@style/cell_style"
+                            android:onClick="eightClick"
+
+                            />
+
+                        <ImageView
+                            android:id="@+id/house_7_block_9"
+                            style="@style/cell_style"
+                            android:onClick="nineClick"
+                            />
+                    </TableRow>
+                </TableLayout>
+
+                <TableLayout
+                    android:id="@+id/house_8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/dim_3"
+                    android:alpha="0.4"
+                    android:background="@color/white">
+
+                    <TableRow
+                        android:id="@+id/house_8_row_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        >
+
+                        <ImageView
+                            android:id="@+id/house_8_block_1"
+                            style="@style/cell_style"
+                            android:onClick="oneClick"
+
+                            />
+
+                        <ImageView
+                            android:id="@+id/house_8_block_2"
+                            style="@style/cell_style"
+                            android:onClick="twoClick"
+
+                            />
+
+                        <ImageView
+                            android:id="@+id/house_8_block_3"
+                            style="@style/cell_style"
+                            android:onClick="threeClick"
+
+                            />
+                    </TableRow>
+
+                    <TableRow
+                        android:id="@+id/house_8_row_2"
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        >
+
+                        <ImageView
+                            android:id="@+id/house_8_block_4"
+                            style="@style/cell_style"
+                            android:onClick="fourClick"
+
+                            />
+
+                        <ImageView
+                            android:id="@+id/house_8_block_5"
+                            style="@style/cell_style"
+                            android:onClick="fiveclick"
+
+                            />
+
+                        <ImageView
+                            android:id="@+id/house_8_block_6"
+                            style="@style/cell_style"
+                            android:onClick="sixClick"
+
+                            />
+                    </TableRow>
+
+                    <TableRow
+                        android:id="@+id/house_8_row_3"
+                        android:layout_width="wrap_content"
+
+                        android:layout_height="wrap_content"
+                        >
+
+                        <ImageView
+                            android:id="@+id/house_8_block_7"
+                            style="@style/cell_style"
+                            android:onClick="sevenClick"
+
+                            />
+
+                        <ImageView
+                            android:id="@+id/house_8_block_8"
+                            style="@style/cell_style"
+                            android:onClick="eightClick"
+
+                            />
+
+                        <ImageView
+                            android:id="@+id/house_8_block_9"
+                            style="@style/cell_style"
+                            android:onClick="nineClick"
+
+                            />
+                    </TableRow>
+                </TableLayout>
+
+                <TableLayout
+                    android:id="@+id/house_9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/dim_3"
+                    android:alpha="0.4"
+                    android:background="@color/white">
+
+                    <TableRow
+                        android:id="@+id/house_9_row_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        >
+
+                        <ImageView
+                            android:id="@+id/house_9_block_1"
+                            style="@style/cell_style"
+                            android:onClick="oneClick"
+
+                            />
+
+                        <ImageView
+                            android:id="@+id/house_9_block_2"
+                            style="@style/cell_style"
+                            android:onClick="twoClick"
+
+                            />
+
+                        <ImageView
+                            android:id="@+id/house_9_block_3"
+                            style="@style/cell_style"
+                            android:onClick="threeClick"
+
+                            />
+                    </TableRow>
+
+                    <TableRow
+                        android:id="@+id/house_9_row_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        >
+
+                        <ImageView
+                            android:id="@+id/house_9_block_4"
+                            style="@style/cell_style"
+                            android:onClick="fourClick"
+
+                            />
+
+                        <ImageView
+                            android:id="@+id/house_9_block_5"
+                            style="@style/cell_style"
+                            android:onClick="fiveclick"
+                            />
+
+                        <ImageView
+                            android:id="@+id/house_9_block_6"
+                            style="@style/cell_style"
+                            android:onClick="sixClick"
+
+                            />
+                    </TableRow>
+
+                    <TableRow
+                        android:id="@+id/house_9_row_3"
+                        android:layout_width="wrap_content"
+
+                        android:layout_height="wrap_content"
+                        >
+
+                        <ImageView
+                            android:id="@+id/house_9_block_7"
+                            style="@style/cell_style"
+                            android:onClick="sevenClick"
+
+                            />
+
+                        <ImageView
+                            android:id="@+id/house_9_block_8"
+                            style="@style/cell_style"
+                            android:onClick="eightClick"
+
+                            />
+
+                        <ImageView
+                            android:id="@+id/house_9_block_9"
+                            style="@style/cell_style"
+                            android:onClick="nineClick"
+
+                            />
+                    </TableRow>
+                </TableLayout>
+            </TableRow>
+        </TableLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/device_list_view"
+        android:visibility="visible"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <include
+            layout="@layout/activity_wi_fi_device_list"
+            />
+    </RelativeLayout>
+
+</RelativeLayout>

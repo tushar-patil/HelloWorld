@@ -5,10 +5,15 @@ import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.net.wifi.p2p.WifiP2pConfig;
+import android.net.wifi.p2p.WifiP2pDevice;
 import android.net.wifi.p2p.WifiP2pDeviceList;
+import android.net.wifi.p2p.WifiP2pInfo;
 import android.net.wifi.p2p.WifiP2pManager;
 import android.net.wifi.p2p.WifiP2pManager.Channel;
 import android.net.wifi.p2p.WifiP2pManager.ChannelListener;
+import android.net.wifi.p2p.WifiP2pManager.PeerListListener;
+import android.os.AsyncTask;
 import android.os.Binder;
 import android.os.IBinder;
 import android.os.Looper;
@@ -16,13 +21,20 @@ import android.widget.Toast;
 
 import com.example.tushar.notATicTacToe.R;
 import com.example.tushar.notATicTacToe.Utils.LogUtil;
-public class WiFiPlayService extends Service implements ChannelListener, WifiP2pManager.PeerListListener {
+import com.example.tushar.notATicTacToe.WiFiService.WiFiMainGameActivity.WiFiServiceListener;
+
+public class WiFiPlayService extends Service implements ChannelListener, PeerListListener {
     private static final String TAG = WiFiPlayService.class.getSimpleName();
 
-    private final IBinder mBinder = new WiFiServiceBinder();
-    private WiFiDeviceListActivity activity = null;
+    private WiFiGameServerThread mServerThread = null;
+    private WiFiClientThread mClientThread = null;
 
-    private WiFiDeviceListActivity.WiFiServiceListener mServiceListener = null;
+    private ServerThreadListener mServerThreadListener = null;
+
+    private final IBinder mBinder = new WiFiServiceBinder();
+    private WiFiMainGameActivity activity = null;
+
+    private WiFiMainGameActivity.WiFiServiceListener mServiceListener = null;
     private final IntentFilter intentFilter = new IntentFilter();
     private boolean isWifiP2pEnabled = false;
 
@@ -33,7 +45,7 @@ public class WiFiPlayService extends Service implements ChannelListener, WifiP2p
 
     private boolean retryChannel = false;
 
-    public WiFiDeviceListActivity getActivity() {
+    public WiFiMainGameActivity getActivity() {
         return activity;
     }
 
@@ -41,25 +53,6 @@ public class WiFiPlayService extends Service implements ChannelListener, WifiP2p
     public IBinder onBind(Intent intent) {
         return mBinder;
     }
-
-    @Override
-    public void onChannelDisconnected() {
-        LogUtil.d(TAG, "onChannelDisconnected");
-// we will try once more
-        if (mWiFiManager != null && !retryChannel) {
-            Toast.makeText(this, "Channel lost. Trying again",
-                    Toast.LENGTH_LONG).show();
-            resetPeers();
-            retryChannel = true;
-            mChannel = initialize(this, getMainLooper(), this);
-        } else {
-            Toast.makeText(
-                    this,
-                    "Severe! Channel is probably lost premanently. Try Disable/Re-Enable P2P.",
-                    Toast.LENGTH_LONG).show();
-        }
-    }
-
 
     public class WiFiServiceBinder extends Binder {
         WiFiPlayService getService() {
@@ -70,7 +63,7 @@ public class WiFiPlayService extends Service implements ChannelListener, WifiP2p
     public void bindAcitivity(Activity activity) {
         LogUtil.d(TAG, "Binding Activity");
 
-        this.activity = (WiFiDeviceListActivity) activity;
+        this.activity = (WiFiMainGameActivity) activity;
        /* if (localDevice != null)
             updateThisDevice(localDevice);*/
         discoverPeers();
@@ -126,10 +119,9 @@ public class WiFiPlayService extends Service implements ChannelListener, WifiP2p
         intentFilter
                 .addAction(WifiP2pManager.WIFI_P2P_THIS_DEVICE_CHANGED_ACTION);
 
-        LogUtil.d(TAG, "WiFi Manager initialized");
 
         mWiFiManager = (WifiP2pManager) getSystemService(Context.WIFI_P2P_SERVICE);
-        LogUtil.d(TAG, "Channel initialized");
+        LogUtil.d(TAG, "WiFi Manager initialized");
 
         mChannel = initialize(this, getMainLooper(), this);
 
@@ -177,11 +169,11 @@ public class WiFiPlayService extends Service implements ChannelListener, WifiP2p
         mServiceListener.onPeersAvailable(peers);
     }
 
-    public WiFiDeviceListActivity.WiFiServiceListener getmServiceListener() {
+    public WiFiServiceListener getmServiceListener() {
         return mServiceListener;
     }
 
-    final public void bindListener(WiFiDeviceListActivity.WiFiServiceListener listener) {
+    final public void bindListener(WiFiServiceListener listener) {
         mServiceListener = listener;
     }
 
@@ -189,6 +181,16 @@ public class WiFiPlayService extends Service implements ChannelListener, WifiP2p
     public void onDestroy() {
         LogUtil.d(TAG, "WiFiPlayService Destroyed");
         unregisterReceiver(mReceiver);
+
+        if (mClientThread != null && (mClientThread.getStatus() == AsyncTask.Status.RUNNING
+                || mClientThread.getStatus() == AsyncTask.Status.PENDING)) {
+            mClientThread.cancel(true);
+        }
+
+        if (mServerThread != null && (mServerThread.getStatus() == AsyncTask.Status.RUNNING
+                || mServerThread.getStatus() == AsyncTask.Status.PENDING)) {
+            mServerThread.cancel(true);
+        }
         super.onDestroy();
     }
 
@@ -197,4 +199,181 @@ public class WiFiPlayService extends Service implements ChannelListener, WifiP2p
         mWiFiManager.requestConnectionInfo(mChannel, listener);
     }
 
+    public void connect(WifiP2pConfig config) {
+        mWiFiManager.connect(mChannel, config, new WifiP2pManager.ActionListener() {
+            @Override
+            public void onSuccess() {
+                LogUtil.d(TAG, " Device Connection success");
+                // WiFiBroadCastReceiver will notify us. Ignore for now.
+            }
+
+            @Override
+            public void onFailure(int reason) {
+                LogUtil.d(TAG, " Device Connection Failed");
+
+                Toast.makeText(WiFiPlayService.this,
+                        WiFiPlayService.this.getResources().
+                                getString(R.string.connection_failed_retry),
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    public void disConnect(int status) {
+        switch (status) {
+            case WifiP2pDevice.CONNECTED:
+                removeGroup();
+                break;
+            case WifiP2pDevice.AVAILABLE:
+            case WifiP2pDevice.INVITED:
+                cancelConnect();
+                break;
+            default:
+                break;
+        }
+        mWiFiManager.removeGroup(mChannel, new WifiP2pManager.ActionListener() {
+
+            @Override
+            public void onFailure(int reasonCode) {
+                LogUtil.e(TAG, "Disconnect failed. Reason :" + reasonCode);
+                //reason  The reason for failure could be one of P2P_UNSUPPORTED 1, ERROR 0 or BUSY 2.
+            }
+
+            @Override
+            public void onSuccess() {
+                LogUtil.d(TAG, "Disconnect Success");
+
+                Toast.makeText(WiFiPlayService.this, "DisConnected Successfully",
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
+
+    }
+
+    private void removeGroup() {
+        mWiFiManager.removeGroup(mChannel, new WifiP2pManager.ActionListener() {
+            @Override
+            public void onSuccess() {
+                LogUtil.d(TAG, "Remove Group Success");
+
+                Toast.makeText(WiFiPlayService.this, "Aborting connection",
+                        Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onFailure(int reasonCode) {
+                LogUtil.d(TAG, "Remove Group failed");
+
+                Toast.makeText(WiFiPlayService.this,
+                        "Connect abort request failed. Reason Code: "
+                                + reasonCode, Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void cancelConnect() {
+        mWiFiManager.cancelConnect(mChannel, new WifiP2pManager.ActionListener() {
+            @Override
+            public void onSuccess() {
+                LogUtil.d(TAG, "Aborting connection Success");
+                Toast.makeText(WiFiPlayService.this, "Aborting connection",
+                        Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onFailure(int reasonCode) {
+                LogUtil.d(TAG, "Aborting connection Failed");
+
+                Toast.makeText(WiFiPlayService.this,
+                        "Connect abort request failed. Reason Code: "
+                                + reasonCode, Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    @Override
+    public void onChannelDisconnected() {
+        LogUtil.d(TAG, "onChannelDisconnected");
+        // we will try once more
+        if (mWiFiManager != null && !retryChannel) {
+            Toast.makeText(this, "Channel lost. Trying again",
+                    Toast.LENGTH_LONG).show();
+            resetPeers();
+            retryChannel = true;
+            mChannel = initialize(this, getMainLooper(), this);
+        } else {
+            Toast.makeText(
+                    this,
+                    "Severe! Channel is probably lost premanently. Try Disable/Re-Enable P2P.",
+                    Toast.LENGTH_LONG).show();
+        }
+    }
+
+    public void startServerThread(WifiP2pDevice device) {
+       /* Intent intent = new Intent(this, MainGameActivity.class);
+        intent.putExtra(Constants.INTENT_EXTRA_FOR_SERVER_OR_CLIENT,
+                Constants.START_SERVER_THREAD);
+        intent.putExtra(Constants.INTENT_SELECTED_DEVICE,
+                mWiFiDevicesListAdapter.getItem(mSelectedDevicePosition).deviceName);
+        startActivity(intent);*/
+        LogUtil.d(TAG, "starting WiFiGameServerThread");
+        mServerThreadListener = new ServerThreadListener();
+
+        mServerThread = new WiFiGameServerThread(this, mServerThreadListener);
+        mServerThread.execute(device);
+
+    }
+
+    public void startClientThread(WifiP2pInfo info) {
+      /*  Intent intent = new Intent(this, MainGameActivity.class);
+        intent.putExtra(Constants.INTENT_EXTRA_FOR_SERVER_OR_CLIENT,
+                Constants.START_CLIENT_THREAD);
+        startActivity(intent);*/
+        LogUtil.d(TAG, "starting WiFiClientThread");
+        mServerThreadListener = new ServerThreadListener();
+
+        mClientThread = new WiFiClientThread(this, mServerThreadListener);
+        mClientThread.execute(info);
+    }
+
+    public class ServerThreadListener {
+
+        private volatile boolean mSendMessageNow = false;
+        private String mMessageToBeSent = null;
+
+        public String getmMessageToBeSent() {
+            return mMessageToBeSent;
+        }
+
+        public void setmMessageToBeSent(String mMessageToBeSent) {
+            this.mMessageToBeSent = mMessageToBeSent;
+        }
+
+        public boolean ismSendMessageNow() {
+            synchronized (this) {
+                return mSendMessageNow;
+            }
+        }
+
+        public void setmSendMessageNow(boolean mSendMessageNow) {
+            synchronized (this) {
+                this.mSendMessageNow = mSendMessageNow;
+            }
+        }
+
+        public void onSocketConnectionCompleted() {
+            activity.onSocketConnectionCompleted();
+        }
+
+        public void onMessageReceived(String message) {
+            activity.onMessageReceived(message);
+        }
+    }
+
+    public void sendMessage(String message) {
+        LogUtil.d(TAG, "Message Send" + message);
+
+        mServerThreadListener.setmMessageToBeSent(message);
+        mServerThreadListener.setmSendMessageNow(true);
+    }
 }

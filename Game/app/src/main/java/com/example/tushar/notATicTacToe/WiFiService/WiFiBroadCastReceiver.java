@@ -38,8 +38,10 @@ public class WiFiBroadCastReceiver extends BroadcastReceiver {
                 // Wifi Direct mode is enabled
                 mService.setIsWifiP2pEnabled(true);
                 // TODO let's go and test ...
+                LogUtil.d(TAG, "Calling discoverPeers");
                 mService.discoverPeers();
             } else {
+                LogUtil.d(TAG, "WiFi P2P is Off");
                 mService.setIsWifiP2pEnabled(false);
                 mService.resetPeers();
 
@@ -62,16 +64,16 @@ public class WiFiBroadCastReceiver extends BroadcastReceiver {
                 return;
             }
 
-
             NetworkInfo networkInfo = (NetworkInfo) intent
                     .getParcelableExtra(WifiP2pManager.EXTRA_NETWORK_INFO);
 
-            LogUtil.d(TAG, "P2P connection changed - networkInfo:" + networkInfo.toString());
+            LogUtil.d(TAG, "P2P connection changed - networkInfo:" + networkInfo.getState());
             if (networkInfo.isConnected()) {
 
+                LogUtil.d(TAG, "Connected to other device, calling requestConnectionInfo ");
                 // we are connected with the other device, request connection
                 // info to find group owner IP
-               /* mService.requestConnectionInfo(serviceListener);*/
+                mService.requestConnectionInfo(mService.getActivity());
             } else {
                 // It's a disconnect
                 mService.resetPeers();
@@ -86,14 +88,15 @@ public class WiFiBroadCastReceiver extends BroadcastReceiver {
            /* mService.updateThisDevice((WifiP2pDevice) intent.getParcelableExtra(
                     WifiP2pManager.EXTRA_WIFI_P2P_DEVICE));*/
             LogUtil.d(TAG, "P2P this device changed - wifiP2pDevice:" + wifiP2pDevice.toString());
-//        } else if (WifiP2pManager.WIFI_P2P_DISCOVERY_CHANGED_ACTION.equals(action)) {
+        } else if (WifiP2pManager.WIFI_P2P_DISCOVERY_CHANGED_ACTION.equals(action)) {
+            LogUtil.d(TAG, "In WIFI_P2P_DISCOVERY_CHANGED_ACTION");
 //        	// TODO ...
 //            Broadcast intent action indicating that peer discovery has either started or stopped.
 //            One extra EXTRA_DISCOVERY_STATE indicates whether discovery has started or stopped.
 //            Note that discovery will be stopped during a connection setup.
 //            If the application tries to re-initiate discovery during this time, it can fail.
-            // 1. WIFI_P2P_DISCOVERY_STARTED
-            // 2. WIFI_P2P_DISCOVERY_STOPPED
+//            // 1. WIFI_P2P_DISCOVERY_STARTED
+//            // 2. WIFI_P2P_DISCOVERY_STOPPED
         } else {
             LogUtil.d(TAG, "Other P2P change action - " + action);
         }

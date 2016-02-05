@@ -8,6 +8,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.example.tushar.notATicTacToe.R;
+import com.example.tushar.notATicTacToe.Utils.AlertDialog;
 import com.example.tushar.notATicTacToe.Utils.LogUtil;
 
 import java.util.ArrayList;
@@ -20,7 +21,8 @@ public class GameMenuActivity extends Activity {
     private ListView mGameMenuListView = null;
     private com.example.tushar.notATicTacToe.MenuScreen.GameMenuAdapter mGameMenuAdapter = null;
 
-    List<String>mGameMenuStringList = new ArrayList<>();
+    List<String> mGameMenuStringList = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,7 +54,7 @@ public class GameMenuActivity extends Activity {
     AdapterView.OnItemClickListener mMenuItemClickListener = new AdapterView.OnItemClickListener() {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-               omMenuItemClick(position);
+            omMenuItemClick(position);
         }
     };
 
@@ -63,10 +65,25 @@ public class GameMenuActivity extends Activity {
                 startActivity(intent);
                 break;
             case 1:
+                AlertDialog.showWinningDialog(GameMenuActivity.this,
+                        getResources().getString(R.string.stay_tuned),
+                        getResources().getString(R.string.coming_soon),
+                        getResources().getString(R.string.ok),
+                        null);
                 break;
             case 2:
+                AlertDialog.showWinningDialog(GameMenuActivity.this,
+                        getResources().getString(R.string.stay_tuned),
+                        getResources().getString(R.string.coming_soon),
+                        getResources().getString(R.string.ok),
+                        null);
                 break;
             case 3:
+                AlertDialog.showWinningDialog(GameMenuActivity.this,
+                        getResources().getString(R.string.stay_tuned),
+                        getResources().getString(R.string.coming_soon),
+                        getResources().getString(R.string.ok),
+                        null);
                 break;
             default:
                 break;

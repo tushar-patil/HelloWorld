@@ -11,8 +11,8 @@
 
 
     <!-- Game Screen-->
-    <string name="player_one_tuen_txt">प्लेयर 1 की पारी</string>
-    <string name="player_two_tuen_txt">प्लेयर 2 की पारी</string>
+    <string name="player_one_turn_txt">प्लेयर 1 की पारी</string>
+    <string name="player_two_turn_txt">प्लेयर 2 की पारी</string>
 
     <string name="house_play_info_tv">खेलने के लिए हाउस = </string>
     <string name="undo_txt">Undo</string>
